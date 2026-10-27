@@ -1,0 +1,24 @@
+---
+import LegalContent from '../components/LegalContent.astro';
+import PageHero from '../components/PageHero.astro';
+import { privacyPolicy } from '../data/legal';
+import { seo } from '../data/seo';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title={seo.pages.privacidad.title} description={seo.pages.privacidad.description}>
+	<PageHero
+		compact
+		eyebrow={privacyPolicy.eyebrow}
+		title={privacyPolicy.title}
+		description={privacyPolicy.description}
+	/>
+
+	<section class="section section--tight">
+		<LegalContent
+			page={privacyPolicy}
+			otherHref="/aviso-legal/"
+			otherLabel="Aviso legal"
+		/>
+	</section>
+</Layout>
