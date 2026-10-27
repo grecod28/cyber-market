@@ -1,11 +1,14 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { seo } from '../data/seo';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={seo.pages.home.title} description={seo.pages.home.description}>
+	<section class="section">
+		<div class="container">
+			<p class="eyebrow">Ciber · Locutorio · Tienda</p>
+			<h1>Cyber Market</h1>
+			<p class="lead">Estamos preparando la nueva web informativa de Cyber Market en Vigo.</p>
+		</div>
+	</section>
 </Layout>
