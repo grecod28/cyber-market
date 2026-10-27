@@ -1,0 +1,87 @@
+---
+import Icon from './Icon.astro';
+import { business } from '../data/business';
+---
+
+<div class="schedule-block">
+	<div class="schedule-block__top">
+		<span class="schedule-block__icon">
+			<Icon name="clock" size={24} />
+		</span>
+		<p class="schedule-block__label">Horario</p>
+	</div>
+	<p class="schedule-block__time">
+		<span>{business.hours.opens}</span>
+		<span class="schedule-block__dash" aria-hidden="true">–</span>
+		<span>{business.hours.closes}</span>
+	</p>
+	<p class="schedule-block__days">{business.hours.days}</p>
+	<p class="schedule-block__note">{business.hours.note}</p>
+</div>
+
+<style>
+	.schedule-block {
+		padding: clamp(1.35rem, 3vw, 1.9rem);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.schedule-block__top {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.schedule-block__icon {
+		display: grid;
+		place-items: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 0.75rem;
+		background: var(--color-accent-soft);
+		color: var(--color-brand-dark);
+	}
+
+	.schedule-block__label {
+		margin: 0;
+		color: var(--color-brand-dark);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.schedule-block__time {
+		display: flex;
+		align-items: baseline;
+		gap: 0.2rem;
+		margin: 0 0 0.5rem;
+		color: var(--color-brand-dark);
+		font-family: var(--font-display);
+		font-size: clamp(2.1rem, 5vw, 3.3rem);
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		line-height: 1;
+	}
+
+	.schedule-block__dash {
+		color: var(--color-border-strong);
+	}
+
+	.schedule-block__days {
+		margin: 0;
+		color: var(--color-ink);
+		font-size: 0.95rem;
+		font-weight: 650;
+	}
+
+	.schedule-block__note {
+		margin: 0.2rem 0 0;
+		color: var(--color-ink-muted);
+		font-size: 0.83rem;
+	}
+</style>

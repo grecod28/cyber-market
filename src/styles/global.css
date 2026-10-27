@@ -199,6 +199,14 @@ a:hover {
 	color: var(--color-bg);
 }
 
+.section--dark a.button--light {
+	color: var(--color-brand-dark);
+}
+
+.section--dark a.button--light:hover {
+	color: var(--color-ink);
+}
+
 .section--dark :focus-visible {
 	outline-color: var(--color-accent-soft);
 }
@@ -216,6 +224,7 @@ a:hover {
 
 .split {
 	display: grid;
+	grid-template-columns: minmax(0, 1fr);
 	gap: clamp(1.75rem, 4vw, 3.5rem);
 	align-items: center;
 }

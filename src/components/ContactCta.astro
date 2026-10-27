@@ -1,0 +1,44 @@
+---
+import Icon from './Icon.astro';
+import { business, phoneHref } from '../data/business';
+
+interface Props {
+	showEmail?: boolean;
+	light?: boolean;
+}
+
+const { showEmail = false, light = false } = Astro.props;
+---
+
+<div class:list={['cta-row', light && 'cta-row--light']}>
+	<a class:list={['button', light ? 'button--light' : 'button--primary']} href={phoneHref}>
+		<Icon name="phone" size={18} />
+		Llamar al {business.phone.display}
+	</a>
+	<a
+		class:list={['button', light ? 'button--outline-light' : 'button--secondary']}
+		href={business.maps.url}
+		target="_blank"
+		rel="noopener noreferrer"
+	>
+		<Icon name="pin" size={18} />
+		Cómo llegar<span class="sr-only"> (se abre en una nueva pestaña)</span>
+	</a>
+	{showEmail && (
+		<a class="text-link" href={`mailto:${business.email}`}>
+			<Icon name="mail" size={17} />
+			Escribir un email
+		</a>
+	)}
+	{business.whatsapp && (
+		<a
+			class:list={['button', light ? 'button--outline-light' : 'button--secondary']}
+			href={business.whatsapp}
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<Icon name="smartphone" size={18} />
+			WhatsApp<span class="sr-only"> (se abre en una nueva pestaña)</span>
+		</a>
+	)}
+</div>
