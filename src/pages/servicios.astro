@@ -1,0 +1,196 @@
+---
+import ServiciosIllustration from '../assets/illustrations/servicios.svg';
+import ContactCta from '../components/ContactCta.astro';
+import Icon from '../components/Icon.astro';
+import InfoNotice from '../components/InfoNotice.astro';
+import PageHero from '../components/PageHero.astro';
+import ScheduleBlock from '../components/ScheduleBlock.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { seo } from '../data/seo';
+import { parcelCarriers, services } from '../data/services';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title={seo.pages.servicios.title} description={seo.pages.servicios.description}>
+	<PageHero
+		eyebrow="Otros servicios"
+		title="Ciber, recargas, paquetería y mucho más"
+		description="En Cyber Market resolvemos gestiones de cada día: desde imprimir un documento o recoger un paquete hasta reparar tu móvil o comprar un componente para el ordenador."
+		image={ServiciosIllustration}
+		imageAlt="Ilustración de un mostrador con ordenador, teléfono, impresora, cajas de paquetería y herramientas de reparación."
+	>
+		<div slot="actions">
+			<ContactCta showEmail />
+		</div>
+	</PageHero>
+
+	<section class="section" aria-labelledby="servicios">
+		<div class="container">
+			<SectionHeading
+				id="servicios"
+				eyebrow="Servicios"
+				title="Todo en un mismo sitio"
+				description="Atención presencial y cercana para que no tengas que ir de un lado a otro. Si no ves lo que buscas, pregúntanos."
+			/>
+
+			<div class="card-grid services-grid">
+				{services.map((service) => <ServiceCard service={service} />)}
+			</div>
+
+			<div class="services-note">
+				<InfoNotice title="Servicios presenciales" tone="info" icon="shield">
+					<p>
+						No se pueden contratar ni pagar desde esta web. La disponibilidad de cada
+						servicio se confirma en tienda o por teléfono. Si tienes una gestión
+						urgente, llámanos antes de acercarte.
+					</p>
+				</InfoNotice>
+			</div>
+		</div>
+	</section>
+
+	<section id="paqueteria" class="section section--alt" aria-labelledby="paqueteria-title">
+		<div class="container parcel">
+			<div>
+				<p class="eyebrow">Paquetería</p>
+				<h2 id="paqueteria-title">Recoge y envía tus paquetes</h2>
+				<p class="lead">
+					Somos punto de recogida y envío de paquetería. Trabajamos con distintas
+					compañías para que puedas recoger tus pedidos o enviar un paquete desde el
+					barrio.
+				</p>
+				<ul class="carrier-list" aria-label="Compañías de paquetería disponibles">
+					{parcelCarriers.map((carrier) => <li>{carrier}</li>)}
+				</ul>
+				<p class="parcel__note">
+					La disponibilidad de cada compañía y el tipo de gestión pueden variar.
+					Confirma en tienda antes de venir.
+				</p>
+			</div>
+
+			<div class="parcel__panel">
+				<span class="parcel__icon"><Icon name="box" size={34} /></span>
+				<h3>Punto de recogida y envío</h3>
+				<p>
+					Trae tu paquete o el aviso de recogida y te ayudamos con la gestión. También
+					puedes llamarnos para preguntar por una compañía concreta.
+				</p>
+				<ContactCta />
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--dark" aria-labelledby="ayuda">
+		<div class="container services-cta">
+			<div>
+				<p class="eyebrow">Estamos cerca</p>
+				<h2 id="ayuda">¿Necesitas ayuda con una gestión?</h2>
+				<p class="lead">
+					Llámanos o pásate por Cyber Market. Te orientamos sobre el servicio que
+					necesitas y te confirmamos la disponibilidad en el momento.
+				</p>
+				<ContactCta light showEmail />
+			</div>
+			<ScheduleBlock />
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.services-grid {
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+	}
+
+	.services-note {
+		max-width: 60rem;
+		margin-top: clamp(1.5rem, 4vw, 2.25rem);
+	}
+
+	.parcel {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: clamp(1.75rem, 5vw, 3.5rem);
+		align-items: center;
+	}
+
+	.parcel h2 {
+		margin-bottom: 0.4em;
+	}
+
+	.carrier-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 1.35rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.carrier-list li {
+		padding: 0.4rem 0.8rem;
+		border: 1px solid var(--color-border-strong);
+		border-radius: 999px;
+		background: var(--color-surface);
+		color: var(--color-ink);
+		font-size: 0.85rem;
+		font-weight: 650;
+	}
+
+	.parcel__note {
+		margin-top: 1.25rem;
+		color: var(--color-ink-muted);
+		font-size: 0.82rem;
+	}
+
+	.parcel__panel {
+		padding: clamp(1.4rem, 3vw, 2rem);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-xl);
+		background:
+			radial-gradient(circle at 100% 0%, rgb(227 154 23 / 0.2), transparent 14rem),
+			var(--color-surface);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.parcel__icon {
+		display: grid;
+		place-items: center;
+		width: 3.6rem;
+		height: 3.6rem;
+		margin-bottom: 1rem;
+		border-radius: 1rem;
+		background: var(--color-accent-soft);
+		color: var(--color-brand-dark);
+	}
+
+	.parcel__panel h3 {
+		margin-bottom: 0.4rem;
+	}
+
+	.parcel__panel p {
+		color: var(--color-ink-soft);
+		font-size: 0.94rem;
+	}
+
+	.services-cta {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: center;
+	}
+
+	.services-cta h2 {
+		margin-bottom: 0.4em;
+	}
+
+	@media (min-width: 860px) {
+		.parcel {
+			grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+		}
+
+		.services-cta {
+			grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+		}
+	}
+</style>
