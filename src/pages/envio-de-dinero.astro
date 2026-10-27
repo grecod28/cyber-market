@@ -1,0 +1,221 @@
+---
+import MoneyIllustration from '../assets/illustrations/envio-dinero.svg';
+import ContactCta from '../components/ContactCta.astro';
+import Icon from '../components/Icon.astro';
+import InfoNotice from '../components/InfoNotice.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { business, fullAddress, phoneHref } from '../data/business';
+import { moneyTransfer } from '../data/moneyTransfer';
+import { seo } from '../data/seo';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title={seo.pages.dinero.title} description={seo.pages.dinero.description}>
+	<PageHero
+		eyebrow={moneyTransfer.eyebrow}
+		title={moneyTransfer.title}
+		description={moneyTransfer.intro}
+		image={MoneyIllustration}
+		imageAlt="Ilustración de un sobre con una ruta de puntos hacia un destino, junto a un globo terráqueo y un avión de papel."
+	>
+		<div slot="actions">
+			<ContactCta showEmail />
+		</div>
+	</PageHero>
+
+	<section class="section" aria-labelledby="requisitos">
+		<div class="container money-grid">
+			<div>
+				<SectionHeading
+					id="requisitos"
+					eyebrow="Antes de venir"
+					title="Qué necesitas para enviar"
+					description="Prepara estos datos y el trámite será más rápido. Si tienes dudas, llámanos antes de acercarte."
+				/>
+
+				<ul class="requirements">
+					{moneyTransfer.requirements.map((requirement, index) => (
+						<li>
+							<span class="requirements__number" aria-hidden="true">{index + 1}</span>
+							<div>
+								<h3>{requirement.title}</h3>
+								<p>{requirement.description}</p>
+							</div>
+						</li>
+					))}
+				</ul>
+			</div>
+
+			<div class="money-steps">
+				<SectionHeading
+					eyebrow="Paso a paso"
+					title="Cómo funciona"
+					description="Es un servicio presencial: te acompañamos durante todo el proceso en la tienda."
+				/>
+
+				<ol class="step-list">
+					{moneyTransfer.steps.map((step) => <li>{step}</li>)}
+				</ol>
+
+				<InfoNotice title="Esta web no envía dinero" tone="info" icon="shield">
+					<p>{moneyTransfer.notes.online}</p>
+				</InfoNotice>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--dark" aria-labelledby="condiciones">
+		<div class="container money-bottom">
+			<div>
+				<p class="eyebrow">Antes de enviar</p>
+				<h2 id="condiciones">Consulta destinos y condiciones en tienda</h2>
+				<p class="lead">{moneyTransfer.notes.store}</p>
+				<p class="money-smallprint">{moneyTransfer.notes.trademarks}</p>
+				<ContactCta light />
+			</div>
+
+			<div class="money-help">
+				<span class="money-help__icon"><Icon name="phone" size={26} /></span>
+				<div>
+					<h3>¿Tienes dudas?</h3>
+					<p>
+						Llámanos al <a href={phoneHref}>{business.phone.display}</a> o pásate por{' '}
+						{fullAddress}. Estamos todos los días de {business.hours.opens} a
+						{business.hours.closes}, también festivos.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.money-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: clamp(2rem, 5vw, 3.5rem);
+		align-items: start;
+	}
+
+	.requirements {
+		display: grid;
+		gap: 0.9rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.requirements li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.9rem;
+		align-items: start;
+		padding: 1.1rem 1.2rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		background: var(--color-surface);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.requirements__number {
+		display: grid;
+		place-items: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 50%;
+		background: var(--color-brand);
+		color: #fff;
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	.requirements h3 {
+		margin-bottom: 0.25rem;
+		font-family: var(--font-body);
+		font-size: 1rem;
+		font-weight: 700;
+	}
+
+	.requirements p {
+		margin: 0;
+		color: var(--color-ink-soft);
+		font-size: 0.92rem;
+	}
+
+	.money-steps {
+		padding: clamp(1.35rem, 3vw, 2rem);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-xl);
+		background:
+			radial-gradient(circle at 100% 0%, rgb(227 154 23 / 0.16), transparent 16rem),
+			var(--color-surface);
+	}
+
+	.money-steps .step-list {
+		margin-bottom: 1.5rem;
+	}
+
+	.money-bottom {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: center;
+	}
+
+	.money-bottom h2 {
+		margin-bottom: 0.4em;
+	}
+
+	.money-smallprint {
+		margin-top: 1.25rem;
+		color: #cbb7a5;
+		font-size: 0.75rem;
+	}
+
+	.money-help {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: clamp(1.25rem, 3vw, 1.75rem);
+		border: 1px solid rgb(255 248 239 / 0.2);
+		border-radius: var(--radius-lg);
+		background: rgb(255 248 239 / 0.06);
+	}
+
+	.money-help__icon {
+		display: grid;
+		place-items: center;
+		flex: none;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 0.9rem;
+		background: var(--color-accent-soft);
+		color: var(--color-brand-dark);
+	}
+
+	.money-help h3 {
+		margin-bottom: 0.3rem;
+		color: var(--color-bg);
+	}
+
+	.money-help p {
+		margin: 0;
+		color: #f1ddc9;
+		font-size: 0.92rem;
+	}
+
+	.money-help a {
+		color: var(--color-accent-soft);
+	}
+
+	@media (min-width: 860px) {
+		.money-grid {
+			grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+		}
+
+		.money-bottom {
+			grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+		}
+	}
+</style>
