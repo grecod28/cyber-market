@@ -1,0 +1,119 @@
+---
+import ProductosIllustration from '../assets/illustrations/productos-latinos.svg';
+import CategoryCard from '../components/CategoryCard.astro';
+import ContactCta from '../components/ContactCta.astro';
+import InfoNotice from '../components/InfoNotice.astro';
+import PageHero from '../components/PageHero.astro';
+import { categories } from '../data/categories';
+import { seo } from '../data/seo';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title={seo.pages.productos.title} description={seo.pages.productos.description}>
+	<PageHero
+		eyebrow="Productos latinoamericanos"
+		title="Sabores de casa, a un paso de casa"
+		description="En Cyber Market encontrarás una selección de productos latinoamericanos para tu día a día: desde harinas y masas hasta café, mate, snacks y bebidas."
+		image={ProductosIllustration}
+		imageAlt="Ilustración de una cesta con aguacates, plátanos, tomates, pan, harina, café y mate sobre una mesa."
+	>
+		<div slot="actions">
+			<ContactCta />
+		</div>
+	</PageHero>
+
+	<section class="section" aria-labelledby="despensa">
+		<div class="container">
+			<div class="products-intro">
+				<div class="prose">
+					<h2 id="despensa">Una despensa con acento latinoamericano</h2>
+					<p>
+						Sabemos que hay sabores que no se encuentran en cualquier sitio. Por eso
+						en la tienda reunimos productos básicos para cocinar en casa y también
+						esos antojos que apetecen a media tarde.
+					</p>
+					<p>
+						La selección cambia con frecuencia, así que no publicamos precios ni stock
+						online. Si buscas algo concreto, llámanos o pásate por la tienda: te
+						decimos qué hay disponible ese día.
+					</p>
+				</div>
+
+				<InfoNotice title="Surtido orientativo" tone="warm" icon="basket">
+					<p>
+						Las categorías y productos de esta página son una muestra de lo que suele
+						haber. La disponibilidad puede variar y se confirma en tienda.
+					</p>
+				</InfoNotice>
+			</div>
+
+			<div class="category-grid">
+				{categories.map((category) => <CategoryCard category={category} />)}
+			</div>
+
+			<div class="products-cta">
+				<div>
+					<p class="eyebrow">Te ayudamos a encontrar</p>
+					<h2>¿Buscas un producto en concreto?</h2>
+					<p>
+						Llámanos o acércate a Cyber Market. Si no lo tenemos ese día, te
+						orientamos y te contamos cuándo puede llegar.
+					</p>
+				</div>
+				<ContactCta showEmail />
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.products-intro {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: clamp(1.5rem, 4vw, 3rem);
+		margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
+	}
+
+	.products-intro h2 {
+		margin-top: 0;
+	}
+
+	.category-grid {
+		display: grid;
+		gap: 1.1rem;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18.5rem), 1fr));
+	}
+
+	.products-cta {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 1.5rem;
+		align-items: center;
+		margin-top: clamp(2.5rem, 6vw, 4rem);
+		padding: clamp(1.5rem, 4vw, 2.5rem);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-xl);
+		background:
+			radial-gradient(circle at 95% 10%, rgb(227 154 23 / 0.18), transparent 18rem),
+			var(--color-surface);
+	}
+
+	.products-cta h2 {
+		margin-bottom: 0.4em;
+	}
+
+	.products-cta .cta-row {
+		margin-top: 0;
+	}
+
+	@media (min-width: 860px) {
+		.products-intro {
+			grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+			align-items: start;
+		}
+
+		.products-cta {
+			grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+		}
+	}
+</style>

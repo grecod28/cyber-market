@@ -1,7 +1,3 @@
-/**
- * Nombres disponibles en `src/components/Icon.astro`.
- * Añade aquí el nombre y su trazado SVG antes de usarlo en datos o componentes.
- */
 export type IconName =
 	| 'monitor'
 	| 'smartphone'
@@ -25,4 +21,7 @@ export type IconName =
 	| 'card'
 	| 'spark'
 	| 'coffee'
-	| 'shield';
+	| 'shield'
+	| 'bottle'
+	| 'flame'
+	| 'bread';

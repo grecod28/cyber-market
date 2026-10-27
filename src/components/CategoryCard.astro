@@ -1,0 +1,97 @@
+---
+import Icon from './Icon.astro';
+import type { ProductCategory } from '../data/categories';
+
+interface Props {
+	category: ProductCategory;
+	compact?: boolean;
+}
+
+const { category, compact = false } = Astro.props;
+---
+
+<article id={category.slug} class:list={['category-card', `category-card--${category.accent}`, compact && 'category-card--compact']}>
+	<span class="category-card__icon">
+		<Icon name={category.icon} size={27} />
+	</span>
+	<h3>{category.name}</h3>
+	<p>{category.description}</p>
+	{!compact && (
+		<ul class="tag-list category-card__items">
+			{category.items.map((item) => (
+				<li>{item}</li>
+			))}
+		</ul>
+	)}
+</article>
+
+<style>
+	.category-card {
+		--cat-accent: var(--color-brand);
+		--cat-soft: var(--color-brand-soft);
+
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: clamp(1.25rem, 2.5vw, 1.6rem);
+		border: 1px solid var(--color-border);
+		border-top: 5px solid var(--cat-accent);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.category-card--teal {
+		--cat-accent: var(--color-teal);
+		--cat-soft: var(--color-teal-soft);
+	}
+
+	.category-card--marigold {
+		--cat-accent: var(--color-accent);
+		--cat-soft: var(--color-accent-soft);
+	}
+
+	.category-card--magenta {
+		--cat-accent: var(--color-magenta);
+		--cat-soft: var(--color-magenta-soft);
+	}
+
+	.category-card--green {
+		--cat-accent: var(--color-green);
+		--cat-soft: var(--color-green-soft);
+	}
+
+	.category-card--coffee {
+		--cat-accent: var(--color-coffee);
+		--cat-soft: var(--color-coffee-soft);
+	}
+
+	.category-card__icon {
+		display: grid;
+		place-items: center;
+		width: 3rem;
+		height: 3rem;
+		margin-bottom: 0.9rem;
+		border-radius: 0.9rem;
+		background: var(--cat-soft);
+		color: var(--cat-accent);
+	}
+
+	.category-card h3 {
+		margin-bottom: 0.4rem;
+	}
+
+	.category-card p {
+		margin-bottom: 0;
+		color: var(--color-ink-soft);
+		font-size: 0.92rem;
+	}
+
+	.category-card__items {
+		margin-top: 1rem;
+	}
+
+	.category-card--compact {
+		padding-block: 1.15rem;
+	}
+</style>
