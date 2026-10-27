@@ -1,0 +1,194 @@
+---
+import ContactCta from '../components/ContactCta.astro';
+import Icon from '../components/Icon.astro';
+import InfoNotice from '../components/InfoNotice.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import PageHero from '../components/PageHero.astro';
+import ScheduleBlock from '../components/ScheduleBlock.astro';
+import { business, emailHref, fullAddress, phoneHref } from '../data/business';
+import { seo } from '../data/seo';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title={seo.pages.contacto.title} description={seo.pages.contacto.description}>
+	<PageHero
+		eyebrow="Contacto y ubicación"
+		title="Estamos en el centro de Vigo"
+		description="Ven a vernos a Avda. García Barbón, 102, o llámanos si prefieres consultar antes de acercarte. Abrimos todos los días, también festivos."
+	>
+		<div slot="actions">
+			<ContactCta showEmail />
+		</div>
+	</PageHero>
+
+	<section class="section" aria-labelledby="datos">
+		<div class="container contact-grid">
+			<div class="contact-card">
+				<h2 id="datos">Datos de contacto</h2>
+
+				<address class="contact-list">
+					<div class="contact-item">
+						<span class="contact-item__icon"><Icon name="pin" size={20} /></span>
+						<div>
+							<p class="contact-item__label">Dirección</p>
+							<a
+								href={business.maps.url}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{fullAddress}<span class="sr-only"> (se abre en una nueva pestaña)</span>
+							</a>
+						</div>
+					</div>
+
+					<div class="contact-item">
+						<span class="contact-item__icon"><Icon name="phone" size={20} /></span>
+						<div>
+							<p class="contact-item__label">Teléfono</p>
+							<a href={phoneHref}>{business.phone.display}</a>
+						</div>
+					</div>
+
+					<div class="contact-item">
+						<span class="contact-item__icon"><Icon name="mail" size={20} /></span>
+						<div>
+							<p class="contact-item__label">Email</p>
+							<a href={emailHref}>{business.email}</a>
+						</div>
+					</div>
+				</address>
+
+				<div class="contact-card__schedule">
+					<ScheduleBlock />
+				</div>
+
+				<ContactCta showEmail />
+			</div>
+
+			<div class="contact-map">
+				<MapEmbed />
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--alt" aria-labelledby="antes-de-venir">
+		<div class="container contact-bottom">
+			<div>
+				<p class="eyebrow">Antes de venir</p>
+				<h2 id="antes-de-venir">¿Tienes una gestión en mente?</h2>
+				<p class="lead">
+					Si vienes por un servicio concreto, llámanos y te confirmamos que podemos
+					atenderte. Así evitas desplazamientos innecesarios.
+				</p>
+				<ContactCta />
+			</div>
+
+			<InfoNotice title="Atención presencial" tone="info" icon="shield">
+				<p>
+					Esta web es informativa: no se pueden realizar envíos, pagos ni
+					reservas online. Todas las gestiones se atienden en la tienda.
+				</p>
+			</InfoNotice>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.contact-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: clamp(1.75rem, 5vw, 3.5rem);
+		align-items: start;
+	}
+
+	.contact-card {
+		padding: clamp(1.4rem, 3vw, 2rem);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-xl);
+		background: var(--color-surface);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.contact-card h2 {
+		margin-bottom: 0.9rem;
+	}
+
+	.contact-list {
+		display: grid;
+		gap: 1rem;
+		font-style: normal;
+	}
+
+	.contact-item {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.8rem;
+		align-items: start;
+	}
+
+	.contact-item__icon {
+		display: grid;
+		place-items: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 0.75rem;
+		background: var(--color-brand-soft);
+		color: var(--color-brand-dark);
+	}
+
+	.contact-item__label {
+		margin: 0 0 0.1rem;
+		color: var(--color-ink-muted);
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.contact-item a {
+		color: var(--color-ink);
+		font-size: 0.94rem;
+		text-decoration: none;
+	}
+
+	.contact-item a:hover {
+		color: var(--color-brand-dark);
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.2em;
+	}
+
+	.contact-card__schedule {
+		margin-top: 1.25rem;
+	}
+
+	.contact-card .cta-row {
+		margin-top: 1.35rem;
+	}
+
+	.contact-bottom {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: clamp(1.75rem, 5vw, 3.5rem);
+		align-items: center;
+	}
+
+	.contact-bottom h2 {
+		margin-bottom: 0.4em;
+	}
+
+	.contact-bottom .notice {
+		background: var(--color-surface);
+	}
+
+	@media (min-width: 880px) {
+		.contact-grid {
+			grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		}
+
+		.contact-bottom {
+			grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+		}
+	}
+</style>
