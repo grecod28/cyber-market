@@ -6,6 +6,6 @@ export default defineConfig({
 	output: 'static',
 	trailingSlash: 'always',
 	// TODO: define `site` con el dominio definitivo antes de publicar, por ejemplo:
-	// site: 'https://www.cybermarketvigo.es',
+	// site: 'https://tu-dominio.es',
 	// Así se generarán URLs canónicas y Open Graph absolutas.
 });

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Cuando se defina el dominio definitivo y se genere un sitemap, añadir aquí:
-# Sitemap: https://www.cybermarketvigo.es/sitemap-index.xml
+# Sitemap: https://tu-dominio.es/sitemap-index.xml

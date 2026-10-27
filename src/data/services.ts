@@ -92,7 +92,7 @@ export const services: Service[] = [
 		slug: 'componentes',
 		title: 'Componentes informáticos',
 		description:
-			'Venta de componentes y accesorios informáticos. Cuéntanos qué necesitas y te orientamos.',
+			'Venta de componentes informáticos. Cuéntanos qué necesitas y te orientamos.',
 		icon: 'chip',
 		accent: 'magenta',
 	},
