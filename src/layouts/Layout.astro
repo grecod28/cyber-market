@@ -20,6 +20,49 @@ const {
 // Si no se define `site` en astro.config.mjs, la URL canónica será la del
 // entorno local. Define el dominio definitivo antes de publicar.
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
+const homeUrl = new URL('/', canonical);
+const ogImageUrl = new URL(seo.ogImage, canonical);
+
+const localBusinessSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'LocalBusiness',
+	'@id': `${homeUrl.href}#localbusiness`,
+	name: business.name,
+	description: business.description,
+	url: homeUrl.href,
+	image: ogImageUrl.href,
+	telephone: business.phone.href,
+	email: business.email,
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: business.address.street,
+		postalCode: business.address.postalCode,
+		addressLocality: business.address.city,
+		addressRegion: business.address.province,
+		addressCountry: business.address.countryCode,
+	},
+	openingHoursSpecification: [
+		{
+			'@type': 'OpeningHoursSpecification',
+			dayOfWeek: [
+				'Monday',
+				'Tuesday',
+				'Wednesday',
+				'Thursday',
+				'Friday',
+				'Saturday',
+				'Sunday',
+			],
+			opens: business.hours.opens,
+			closes: business.hours.closes,
+		},
+	],
+	hasMap: business.maps.url,
+	areaServed: {
+		'@type': 'City',
+		name: 'Vigo',
+	},
+};
 ---
 
 <!doctype html>
@@ -44,12 +87,22 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.u
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonical.href} />
+		<meta property="og:image" content={ogImageUrl.href} />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta
+			property="og:image:alt"
+			content={`${business.name}, ciber-locutorio y tienda de barrio en Vigo`}
+		/>
 
-		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageUrl.href} />
 
 		<meta name="generator" content={Astro.generator} />
+		<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
 	</head>
 	<body>
 		<a class="skip-link" href="#contenido">Saltar al contenido</a>
