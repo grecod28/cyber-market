@@ -1,42 +1,49 @@
 /* ==========================================================================
    Cyber Market — estilos globales
-   Paleta cálida inspirada en Latinoamérica. Mobile-first, sin dependencias.
+   Paleta de azul marino y oro tomada del logotipo. Mobile-first, sin dependencias.
    ========================================================================== */
 
 :root {
 	color-scheme: light;
 
 	/* Colores */
-	--color-bg: #fff8ef;
-	--color-surface: #fffdf9;
-	--color-surface-alt: #f9ead8;
-	--color-ink: #2a1a12;
-	--color-ink-soft: #5e4639;
-	--color-ink-muted: #7a6254;
+	--color-bg: #f7f8fb;
+	--color-surface: #ffffff;
+	--color-surface-alt: #eaeef7;
+	--color-ink: #1a2640;
+	--color-ink-soft: #3f4e6b;
+	--color-ink-muted: #63708d;
 
-	--color-brand: #b6401f;
-	--color-brand-dark: #8f2f16;
-	--color-brand-soft: #f7dccf;
+	/* Azul marino del logotipo */
+	--color-brand: #3f5070;
+	--color-brand-dark: #2b3a56;
+	--color-brand-soft: #e1e7f2;
 
-	--color-accent: #e39a17;
-	--color-accent-soft: #fae7b9;
+	/* Oro del logotipo */
+	--color-accent: #f0b23f;
+	--color-accent-strong: #e0a52a;
+	--color-accent-ink: #8a5b08;
+	--color-accent-soft: #fbeac2;
 
-	--color-teal: #0d6b62;
-	--color-teal-dark: #084c46;
-	--color-teal-soft: #d9efeb;
+	--color-teal: #1b6a72;
+	--color-teal-dark: #0f4c53;
+	--color-teal-soft: #dceef0;
 
-	--color-magenta: #a3285b;
-	--color-magenta-soft: #f7dbe6;
+	--color-magenta: #8d3a63;
+	--color-magenta-soft: #f4dfe9;
 
-	--color-green: #3d6b3a;
-	--color-green-soft: #e0edd8;
+	--color-green: #5b6b2e;
+	--color-green-soft: #e8ecd4;
 
-	--color-coffee: #6f4a2f;
-	--color-coffee-soft: #efe0d2;
+	--color-coffee: #6b4a2b;
+	--color-coffee-soft: #efe4d5;
 
-	--color-border: #e8d3bd;
-	--color-border-strong: #a97a55;
-	--color-focus: #0b5d57;
+	--color-border: #dbe1ed;
+	--color-border-strong: #8d9ab2;
+	--color-focus: #2b3a56;
+
+	/* Superficies oscuras (cabecera superior, pie y secciones destacadas) */
+	--color-deep: #26344f;
 
 	/* Tipografía */
 	--font-body: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial,
@@ -51,8 +58,8 @@
 	--radius-lg: 1.5rem;
 	--radius-xl: 2rem;
 
-	--shadow-sm: 0 1px 2px rgb(42 26 18 / 0.06), 0 8px 24px -16px rgb(42 26 18 / 0.25);
-	--shadow-md: 0 2px 4px rgb(42 26 18 / 0.05), 0 18px 40px -24px rgb(42 26 18 / 0.3);
+	--shadow-sm: 0 1px 2px rgb(26 38 64 / 0.06), 0 8px 24px -16px rgb(26 38 64 / 0.25);
+	--shadow-md: 0 2px 4px rgb(26 38 64 / 0.05), 0 18px 40px -24px rgb(26 38 64 / 0.3);
 
 	--transition: 180ms ease;
 }
@@ -73,8 +80,8 @@ body {
 	min-height: 100vh;
 	background-color: var(--color-bg);
 	background-image:
-		radial-gradient(circle at 12% 4%, rgb(227 154 23 / 0.1), transparent 26rem),
-		radial-gradient(circle at 92% 0%, rgb(182 64 31 / 0.07), transparent 24rem);
+		radial-gradient(circle at 12% 4%, rgb(240 178 63 / 0.1), transparent 26rem),
+		radial-gradient(circle at 92% 0%, rgb(63 80 112 / 0.08), transparent 24rem);
 	background-repeat: no-repeat;
 	color: var(--color-ink);
 	font-family: var(--font-body);
@@ -182,17 +189,17 @@ a:hover {
 }
 
 .section--dark {
-	background: var(--color-ink);
+	background: var(--color-deep);
 	color: var(--color-bg);
 }
 
 .section--dark .lead,
 .section--dark p {
-	color: #f1ddc9;
+	color: #cdd7e8;
 }
 
 .section--dark .eyebrow {
-	color: var(--color-accent-soft);
+	color: var(--color-accent);
 }
 
 .section--dark a {
@@ -215,10 +222,10 @@ a:hover {
 	height: 6px;
 	background: linear-gradient(
 		90deg,
-		var(--color-brand) 0 25%,
-		var(--color-accent) 25% 50%,
-		var(--color-teal) 50% 75%,
-		var(--color-magenta) 75% 100%
+		var(--color-accent) 0 32%,
+		var(--color-accent-soft) 32% 58%,
+		var(--color-teal) 58% 82%,
+		#c8d3e6 82% 100%
 	);
 }
 
@@ -355,13 +362,13 @@ a:hover {
 }
 
 .button--primary {
-	background: var(--color-brand);
-	color: #fff;
+	background: var(--color-accent);
+	color: var(--color-ink);
 }
 
 .button--primary:hover {
-	background: var(--color-brand-dark);
-	color: #fff;
+	background: var(--color-accent-strong);
+	color: var(--color-ink);
 }
 
 .button--secondary {
@@ -387,14 +394,14 @@ a:hover {
 }
 
 .button--outline-light {
-	border-color: rgb(255 248 239 / 0.55);
+	border-color: rgb(247 248 251 / 0.55);
 	background: transparent;
 	color: var(--color-bg);
 }
 
 .button--outline-light:hover {
 	border-color: var(--color-bg);
-	background: rgb(255 248 239 / 0.1);
+	background: rgb(247 248 251 / 0.1);
 	color: var(--color-bg);
 }
 
@@ -544,8 +551,8 @@ a:hover {
 }
 
 .notice--warm {
-	border-color: #efcfa4;
-	background: #fff4df;
+	border-color: #f1d79b;
+	background: #fdf3dd;
 }
 
 .notice--warm > svg {
@@ -553,7 +560,7 @@ a:hover {
 }
 
 .notice--info {
-	border-color: #b7dcd5;
+	border-color: #b5d6d9;
 	background: var(--color-teal-soft);
 }
 
@@ -608,7 +615,7 @@ a:hover {
 	z-index: 100;
 	padding: 0.75rem 1rem;
 	border-radius: 0.5rem;
-	background: var(--color-ink);
+	background: var(--color-deep);
 	color: var(--color-bg);
 	text-decoration: none;
 }

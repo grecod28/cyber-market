@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
-import HeroIllustration from '../assets/illustrations/hero-cyber-market.svg';
+import entranceImage from '../assets/images/entrada.jpg';
 import MoneyIllustration from '../assets/illustrations/envio-dinero.svg';
 import CategoryCard from '../components/CategoryCard.astro';
 import ContactCta from '../components/ContactCta.astro';
@@ -42,7 +42,7 @@ import { featuredServices } from '../data/services';
 			<div class="hero__media">
 				<div class="hero__frame">
 					<Image
-						src={HeroIllustration}
+						src={entranceImage}
 						alt="Ilustración de la fachada de Cyber Market, con toldo a rayas, escaparate iluminado y cartel de la tienda."
 						loading="eager"
 						fetchpriority="high"
@@ -203,7 +203,7 @@ import { featuredServices } from '../data/services';
 		width: 34rem;
 		height: 34rem;
 		border-radius: 50%;
-		background: radial-gradient(circle, rgb(227 154 23 / 0.2), transparent 68%);
+		background: radial-gradient(circle, rgb(240 178 63 / 0.24), transparent 68%);
 		content: '';
 		pointer-events: none;
 	}
@@ -278,7 +278,7 @@ import { featuredServices } from '../data/services';
 		padding: 0.65rem 0.9rem;
 		border: 1px solid var(--color-border);
 		border-radius: 0.9rem;
-		background: rgb(255 253 249 / 0.96);
+		background: rgb(255 255 255 / 0.96);
 		box-shadow: var(--shadow-sm);
 	}
 
@@ -337,7 +337,7 @@ import { featuredServices } from '../data/services';
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-xl);
 		background:
-			radial-gradient(circle at 96% 6%, rgb(227 154 23 / 0.16), transparent 18rem),
+			radial-gradient(circle at 96% 6%, rgb(240 178 63 / 0.18), transparent 18rem),
 			var(--color-surface);
 		box-shadow: var(--shadow-sm);
 	}
@@ -361,9 +361,9 @@ import { featuredServices } from '../data/services';
 		display: grid;
 		gap: 0.9rem;
 		padding: clamp(1.25rem, 3vw, 1.75rem);
-		border: 1px solid rgb(255 248 239 / 0.18);
+		border: 1px solid rgb(247 248 251 / 0.18);
 		border-radius: var(--radius-lg);
-		background: rgb(255 248 239 / 0.05);
+		background: rgb(247 248 251 / 0.05);
 	}
 
 	.final-cta__info p {
@@ -372,7 +372,7 @@ import { featuredServices } from '../data/services';
 		gap: 0.65rem;
 		align-items: start;
 		margin: 0;
-		color: #f1ddc9;
+		color: #cdd7e8;
 		font-size: 0.92rem;
 	}
 

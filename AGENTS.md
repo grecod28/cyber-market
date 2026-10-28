@@ -48,8 +48,11 @@ pnpm astro dev stop
 ```text
 /
 ├─ public/                     # archivos estáticos servidos tal cual
-│  ├─ favicon.svg
+│  ├─ favicon.ico              # icono multi-tamaño (16, 32, 48 y 64 px)
 │  ├─ favicon-32.png
+│  ├─ favicon-192.png
+│  ├─ apple-touch-icon.png     # 180×180 para iOS
+│  ├─ favicon.jpg              # fuente del logotipo para generar los PNG
 │  ├─ og-cyber-market.png      # imagen Open Graph 1200×630
 │  └─ robots.txt
 ├─ src/
@@ -130,6 +133,7 @@ pnpm astro dev stop
 ### Estilos
 
 - Tokens de color, tipografía, radios, sombras y transiciones en `src/styles/global.css`.
+- La paleta parte del logotipo: azul marino (`#3f5070`) y oro (`#f0b23f`), con neutros fríos. Al cambiar un color de marca, actualizar también `BrandMark.astro`, las ilustraciones de `src/assets` y la fuente SVG de Open Graph.
 - Estilos específicos de componente en su bloque `<style>` scoped.
 - Nombres de clase tipo BEM: `bloque__elemento--modificador`.
 - Reutilizar utilidades globales (`.container`, `.section`, `.button`, `.card-grid`, `.tag-list`, `.notice`, `.step-list`, etc.) antes de duplicar CSS.
